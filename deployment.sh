@@ -29,7 +29,6 @@ fi
 
 
 # Disable per bucket public access block, this allows setting bucket policies that permit public reads.
-
 echo "Disabling per-bucket public access block..."
 aws s3api put-public-access-block \
     --bucket "$BUCKET" \
@@ -60,14 +59,13 @@ aws s3api put-bucket-policy --bucket "$BUCKET" --policy file:///tmp/${BUCKET}-po
 echo "Bucket $BUCKET created/configured. Example upload:"
 echo "  aws s3 cp ./localfile.txt s3://$BUCKET/localfile.txt --acl public-read"
 
-# -----------------------------
+####################################
 # End create_mycapstone_bucket.sh content
-# -----------------------------
+####################################
 
-
-# -----------------------------
+###################################
 # Begin filemanager.sh content
-# -----------------------------
+##################################
 
 set -euo pipefail
 
@@ -144,8 +142,8 @@ fi
 
 log INFO "script completed"
 
-# -----------------------------
+##############################
 # End filemanager.sh content
-# -----------------------------
+##############################
 
 echo "Combined deployment finished. See $LOG_FILE for filemanager logs."
