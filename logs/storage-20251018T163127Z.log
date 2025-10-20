@@ -1,0 +1,27 @@
+[2025-10-18T16:31:27Z] [INFO] RUN: aws sts get-caller-identity --output json
+[2025-10-18T16:31:29Z] [INFO] OK: aws sts get-caller-identity --output json
+{
+    "UserId": "AIDAXYKJUWJXXEQXNICAU",
+    "Account": "533267264111",
+    "Arn": "arn:aws:iam::533267264111:user/s3-public-user"
+}
+[2025-10-18T16:31:29Z] [INFO] Recorded AWS caller identity
+[2025-10-18T16:31:29Z] [INFO] Creating test file for upload
+[2025-10-18T16:31:29Z] [INFO] Uploading file file1.txt to bucket mycapstone-s3bucket
+[2025-10-18T16:31:29Z] [INFO] RUN: aws s3 cp file1.txt s3://mycapstone-s3bucket/
+[2025-10-18T16:31:32Z] [INFO] OK: aws s3 cp file1.txt s3://mycapstone-s3bucket/
+Completed 16 Bytes/16 Bytes (13 Bytes/s) with 1 file(s) remainingupload: ./file1.txt to s3://mycapstone-s3bucket/file1.txt        
+[2025-10-18T16:31:32Z] [INFO] Upload successful: file1.txt -> s3://mycapstone-s3bucket/file1.txt
+[2025-10-18T16:31:32Z] [INFO] Listing available files in mycapstone-s3bucket
+[2025-10-18T16:31:32Z] [INFO] RUN: aws s3 ls s3://mycapstone-s3bucket/ --recursive
+[2025-10-18T16:31:34Z] [INFO] OK: aws s3 ls s3://mycapstone-s3bucket/ --recursive
+2025-10-18 13:38:15         84 about.txt
+2025-10-18 17:31:33         16 file1.txt
+2025-10-18 13:23:42         43 testfile1.txt
+[2025-10-18T16:31:34Z] [INFO] Listed files in mycapstone-s3bucket
+[2025-10-18T16:31:34Z] [INFO] Deleting test file s3://mycapstone-s3bucket/file1.txt
+[2025-10-18T16:31:34Z] [INFO] RUN: aws s3 rm s3://mycapstone-s3bucket/file1.txt
+[2025-10-18T16:31:36Z] [INFO] OK: aws s3 rm s3://mycapstone-s3bucket/file1.txt
+delete: s3://mycapstone-s3bucket/file1.txt
+[2025-10-18T16:31:36Z] [INFO] Deleted s3://mycapstone-s3bucket/file1.txt
+[2025-10-18T16:31:36Z] [INFO] script completed
