@@ -132,6 +132,14 @@ else
     log ERROR "Failed to list files in $BUCKET"
 fi
 
+# download file from the bucket
+log INFO "Downloading file s3://$BUCKET/file1.txt"
+if run aws s3 cp s3://"$BUCKET"/file1.txt downloaded_file1.txt; then
+	log INFO "Downloaded s3://$BUCKET/file1.txt to downloaded_file1.txt"
+else
+	log ERROR "Failed to download s3://$BUCKET/file1.txt"
+fi
+
 # deleting test file in the bucket
 log INFO "Deleting test file s3://$BUCKET/file1.txt"
 if run aws s3 rm s3://"$BUCKET"/file1.txt; then
